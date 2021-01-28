@@ -26,7 +26,6 @@ h1 {
 }
 
 h2 {
-  font-weight: 600;
   margin-bottom: 30px;
 }
 
@@ -87,7 +86,7 @@ input:focus {
   padding: 0 40px;
   margin-bottom: 20px;
   font-size: 1.3em;
-  font-weight: 800;
+  font-weight: 600;
   list-style-type: none;
 }
 
@@ -101,11 +100,26 @@ input:focus {
   cursor: pointer;
 }
 
+.completed_box .list_box ul li {
+  justify-content: space-between;
+}
+
 .completed_box .list_box ul li .checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.completed_box .list_box ul li .checkbox p {
+  color: #70707090;
+  text-decoration: line-through;
+}
+
+.completed_box .list_box ul li .checkbox i {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   background: #3b3b58;
+  color: #fff;
   margin-right: 50px;
   display: flex;
   justify-content: center;
@@ -113,6 +127,14 @@ input:focus {
   cursor: pointer;
 }
 
-.completed_box .list_box ul li .checkbox i {
+.completed_box .list_box ul li .delete_box i {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fe5f55;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

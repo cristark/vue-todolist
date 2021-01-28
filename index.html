@@ -43,9 +43,9 @@
                 <h2>Lista cose da fare</h2>
                 <div class="list_box">
                     <ul>
-                        <li>
-                            <div class="checkbox"></div>
-                            Fare sport
+                        <li v-for="(element, index) in toDoList">
+                            <div @click="taskCompleted(index)" class="checkbox"></div>
+                            {{element}}
                         </li>
                     </ul>
                 </div>
@@ -56,11 +56,14 @@
                 <h2>Compiti svolti</h2>
                 <div class="list_box">
                     <ul>
-                        <li>
+                        <li v-for="(element, index) in completedList">
                             <div class="checkbox">
                                 <i class="fas fa-arrow-up"></i>
+                                <p>{{element}}</p>
                             </div>
-                            Fare la spesa
+                            <div class="delete_box">
+                                <i class="fas fa-times"></i>
+                            </div>
                         </li>
                     </ul>
                 </div>
