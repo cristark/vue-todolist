@@ -32,9 +32,9 @@
 
             <!-- Sezione inserimento elementi lista -->
             <section class="input_box">
-                <input type="text" name="" id="" placeholder="Inserisci un elemento">
+                <input type="text" v-model="textList" placeholder="Inserisci un elemento">
                 <div class="btn add">
-                    <i class="fas fa-plus"></i>
+                    <i @click="addTask" class="fas fa-plus"></i>
                 </div>
             </section>
 

@@ -7,6 +7,7 @@ let app = new Vue({
 
     el: '#app',
     data: {
+        textList: '',
         toDoList: [
             'Guardare la lezione di teoria della mattina',
             'Fare esercitazioni su Javascript',
@@ -15,6 +16,9 @@ let app = new Vue({
         completedList: [
             'Fare la spesa'
         ]
+    },
+    created() {
+        console.log(this.textList);
     },
     methods: {
         taskCompleted(i) {
@@ -26,7 +30,15 @@ let app = new Vue({
             this.completedList.splice(i, 1);
         },
         deleteElement(i) {
-            this.completedList.splice(i, 1);
+            let mex = confirm('Sei sicuro di voler eliminare questo elemento?');
+            (mex) ? this.completedList.splice(i, 1) : '';
+        },
+        addTask() {
+            (this.textList.length < 4) ?
+                alert('Inserisci un testo più lungo!') :
+                this.toDoList.unshift(this.textList);
+
+            this.textList = '';
         }
     }
 });
