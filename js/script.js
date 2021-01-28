@@ -31,14 +31,38 @@ let app = new Vue({
         },
         deleteElement(i) {
             let mex = confirm('Sei sicuro di voler eliminare questo elemento?');
-            (mex) ? this.completedList.splice(i, 1) : '';
+            if (mex) {
+                this.completedList.splice(i, 1)   
+            };
+        },
+        deleteAllElements() {
+            let mex = confirm('Sei sicuro di voler eliminare tutti gli elementi?');
+            if (mex) {
+                this.completedList = [];  
+            };
         },
         addTask() {
-            (this.textList.length < 4) ?
-                alert('Inserisci un testo più lungo!') :
+            if (this.textList.length < 4) {
+                alert('Inserisci un testo più lungo!');
+            } else {
                 this.toDoList.unshift(this.textList);
+            };
 
             this.textList = '';
+        },
+        moveUp(index) {
+            let new_index = index - 1;
+            let arr = this.toDoList;
+            if (new_index >= 0) {
+                arr.splice(new_index, 0, arr.splice(index, 1)[0]);
+            };
+        },
+        moveDown(index) {
+            let new_index = index + 1;
+            let arr = this.toDoList;
+            if (new_index < arr.length) {
+                arr.splice(new_index, 0, arr.splice(index, 1)[0]);
+            };
         }
     }
 });

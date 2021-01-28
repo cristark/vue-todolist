@@ -34,7 +34,7 @@
             <section class="input_box">
                 <input type="text" v-model="textList" placeholder="Inserisci un elemento">
                 <div class="btn add">
-                    <i @click="addTask" class="fas fa-plus"></i>
+                    <i @click="addTask" class="fas fa-plus" title="Aggiungi elemento"></i>
                 </div>
             </section>
 
@@ -44,7 +44,11 @@
                 <div class="list_box">
                     <ul>
                         <li v-for="(element, index) in toDoList">
-                            <div @click="taskCompleted(index)" class="checkbox"></div>
+                            <div class="move_element">
+                                <i @click="moveUp(index)" :class="(index == 0) ? 'deactive': ''" class="fas fa-caret-up"></i>
+                                <i @click="moveDown(index)" :class="(index == toDoList.length - 1) ? 'deactive': ''" class="fas fa-caret-down"></i>
+                            </div>
+                            <div @click="taskCompleted(index)" class="checkbox" title="Segna come completato"></div>
                             {{element}}
                         </li>
                     </ul>
@@ -53,15 +57,18 @@
 
             <!-- Lista cose fatte -->
             <section class="completed_box">
-                <h2>Compiti svolti</h2>
+                <div class="title">
+                    <h2>Compiti svolti</h2>
+                    <i @click="deleteAllElements()" class="fas fa-trash" title="Svuota tutta la lista"></i>
+                </div>
                 <div class="list_box">
                     <ul>
                         <li v-for="(element, index) in completedList">
                             <div class="checkbox">
-                                <i @click="reTask(index)" class="fas fa-arrow-up"></i>
+                                <i @click="reTask(index)" class="fas fa-arrow-up" title="Ripristina elemento"></i>
                                 <p>{{element}}</p>
                             </div>
-                            <div @click="deleteElement(index)" class="delete_box">
+                            <div @click="deleteElement(index)" class="delete_box" title="Elimina elemento">
                                 <i class="fas fa-times"></i>
                             </div>
                         </li>
