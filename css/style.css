@@ -7,8 +7,112 @@
 
 body {
   font-family: "Work Sans", sans-serif;
+  background: #fcfafa;
+  color: #707070;
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
 }
 
 a {
   color: black;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+header {
+  padding: 30px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.container {
+  width: 1300px;
+  margin: auto;
+}
+
+.input_box {
+  text-align: center;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_box input {
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  color: #70707070;
+  border: 1px solid #70707070;
+  padding: 5px;
+  margin-right: 50px;
+}
+
+input:focus {
+  border: 1px solid #707070;
+  color: #707070;
+}
+
+.input_box i {
+  background: #3b3b58;
+  padding: 10px;
+  font-size: 1.3em;
+  border-radius: 50%;
+  color: #fcfafa;
+  cursor: pointer;
+}
+
+.todo_box {
+  margin-bottom: 50px;
+}
+
+.todo_box .list_box ul li,
+.completed_box .list_box ul li {
+  height: 55px;
+  background: #fff;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.18);
+  border-radius: 20px;
+  line-height: 55px;
+  padding: 0 40px;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  font-weight: 800;
+  list-style-type: none;
+}
+
+.todo_box .list_box ul li .checkbox {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #707070;
+  background: #fcfafa;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.completed_box .list_box ul li .checkbox {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #3b3b58;
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.completed_box .list_box ul li .checkbox i {
+  color: #fff;
 }

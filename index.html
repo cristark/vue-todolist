@@ -25,7 +25,47 @@
 
     <!-- MAIN -->
     <main>
-        <section></section>
+
+        <!-- Contenitore principale Vue -->
+        <section id="app" class="container">
+            <hr>
+
+            <!-- Sezione inserimento elementi lista -->
+            <section class="input_box">
+                <input type="text" name="" id="" placeholder="Inserisci un elemento">
+                <div class="btn add">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </section>
+
+            <!-- Lista cose da fare -->
+            <section class="todo_box">
+                <h2>Lista cose da fare</h2>
+                <div class="list_box">
+                    <ul>
+                        <li>
+                            <div class="checkbox"></div>
+                            Fare sport
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Lista cose fatte -->
+            <section class="completed_box">
+                <h2>Compiti svolti</h2>
+                <div class="list_box">
+                    <ul>
+                        <li>
+                            <div class="checkbox">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            Fare la spesa
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
     </main>
 
     <!-- FOOTER -->
