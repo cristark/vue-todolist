@@ -20,6 +20,13 @@ let app = new Vue({
         taskCompleted(i) {
             this.completedList.unshift(this.toDoList[i]);
             this.toDoList.splice(i, 1);
+        },
+        reTask(i) {
+            this.toDoList.unshift(this.completedList[i]);
+            this.completedList.splice(i, 1);
+        },
+        deleteElement(i) {
+            this.completedList.splice(i, 1);
         }
     }
 });

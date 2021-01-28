@@ -58,10 +58,10 @@
                     <ul>
                         <li v-for="(element, index) in completedList">
                             <div class="checkbox">
-                                <i class="fas fa-arrow-up"></i>
+                                <i @click="reTask(index)" class="fas fa-arrow-up"></i>
                                 <p>{{element}}</p>
                             </div>
-                            <div class="delete_box">
+                            <div @click="deleteElement(index)" class="delete_box">
                                 <i class="fas fa-times"></i>
                             </div>
                         </li>
