@@ -7,8 +7,6 @@
 
 body {
   font-family: "Work Sans", sans-serif;
-  background: #fcfafa;
-  color: #707070;
 }
 
 li {
@@ -17,19 +15,53 @@ li {
   align-items: center;
 }
 
-a {
-  color: black;
-}
-
 h1 {
   font-size: 2.5em;
 }
 
+#app {
+  background: #fcfafa;
+  color: #707070;
+  height: 100vh;
+  transition: all 0.3s linear;
+}
+
 /* | HEADER | */
 header {
+  width: 1300px;
+  margin: 0 auto;
   padding: 30px 0;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  width: 80%;
   text-align: center;
+  padding-left: 150px;
+}
+
+header p {
+  width: 50px;
+}
+
+.dark_box {
+  width: 60px;
+  height: 30px;
+  margin: 0 20px;
+  background-color: #fcfafa;
+  border: 1px solid #707070;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.dark_box .dark_switch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #3b3b58;
 }
 
 /* | MAIN | */
@@ -58,7 +90,7 @@ header {
 }
 
 input:focus {
-  border: 1px solid #707070;
+  border: none;
   color: #707070;
 }
 
@@ -114,6 +146,20 @@ input:focus {
 .todo_box .list_box ul li .edit_element > i {
   margin-right: 23px;
   cursor: pointer;
+}
+
+.todo_box .list_box ul li .edit_element > i.green {
+  color: #70ae6e;
+}
+
+.todo_box .list_box ul li .edit_element input {
+  width: 1000px;
+  border: none;
+  font-size: 1em;
+  color: #3b3b58;
+  font-weight: 800;
+  height: 30px;
+  border-radius: 10px;
 }
 
 .todo_box .list_box ul li .move_element {
@@ -193,4 +239,56 @@ input:focus {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+/* - DARK MODE - */
+
+#app.dark {
+  background: #19181f;
+  color: #fcfafa;
+}
+
+.input_box input.dark {
+  color: #707070;
+  background: #27262c;
+  border-color: #707070;
+  outline: none;
+}
+
+.input_box input.dark:focus {
+  color: #fcfafa;
+  border-color: #fcfafa;
+}
+
+.input_box i.dark {
+  background: #0b8c56;
+}
+
+.todo_box .list_box ul li.dark,
+.completed_box .list_box ul li.dark {
+  background: #1f1e25;
+}
+
+.todo_box .title i.dark {
+  color: #0b8c56;
+}
+
+.todo_box .list_box ul li .edit_element > i.dark {
+  color: #707070;
+}
+
+.todo_box .list_box ul li .edit_element > i.green.dark {
+  color: #0b8c56;
+}
+
+.todo_box .list_box ul li .edit_element input.dark {
+  background: #27262c;
+  color: #707070;
+}
+
+.todo_box .list_box ul li .checkbox.dark {
+  background: #707070;
+}
+
+.completed_box .list_box ul li .checkbox i.dark {
+  background: #0b8c56;
 }

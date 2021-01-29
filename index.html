@@ -17,78 +17,86 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <section id="app" :class="(darkSwitch)?'dark':''">
+        <!-- HEADER -->
+        <header>
+            <h1>To Do List</h1>
+            <p>Light Mode</p>
+            <div class="dark_box" @click="switchDark">
+                <div class="dark_switch"></div>
+            </div>
+            <p>Dark Mode</p>
+        </header>
     
-    <!-- HEADER -->
-    <header>
-        <h1>To Do List</h1>
-    </header>
-
-    <!-- MAIN -->
-    <main>
-
-        <!-- Contenitore principale Vue -->
-        <section id="app" class="container">
-            <hr>
-
-            <!-- Sezione inserimento elementi lista -->
-            <section class="input_box">
-                <input type="text" @keyup.enter="addTask" v-model="textList" placeholder="Inserisci un elemento">
-                <div class="btn add">
-                    <i @click="addTask" class="fas fa-plus" title="Aggiungi elemento"></i>
-                </div>
-            </section>
-
-            <!-- Lista cose da fare -->
-            <section class="todo_box">
-                <div class="title">
-                    <h2>Lista cose da fare</h2>
-                    <i v-if="toDoList.length > 0" @click="allTasks" class="fas fa-check-square" title="Segna tutti come completati"></i>
-                </div>
-                <div class="list_box">
-                    <ul>
-                        <li v-for="(element, index) in toDoList">
-                            <div class="edit_element">
-                                <div class="move_element">
-                                    <i @click="moveUp(index)" :class="(index == 0) ? 'deactive': ''" class="fas fa-caret-up"></i>
-                                    <i @click="moveDown(index)" :class="(index == toDoList.length - 1) ? 'deactive': ''" class="fas fa-caret-down"></i>
+        <!-- MAIN -->
+        <main>
+    
+            <!-- Contenitore principale Vue -->
+            <section class="container">
+                <hr>
+    
+                <!-- Sezione inserimento elementi lista -->
+                <section class="input_box">
+                    <input type="text" @keyup.enter="addTask" v-model="textList" placeholder="Inserisci un elemento" :class="(darkSwitch)?'dark':''">
+                    <div class="btn add">
+                        <i @click="addTask" class="fas fa-plus" :class="(darkSwitch)?'dark':''" title="Aggiungi elemento"></i>
+                    </div>
+                </section>
+    
+                <!-- Lista cose da fare -->
+                <section class="todo_box">
+                    <div class="title">
+                        <h2>Lista cose da fare</h2>
+                        <i v-if="toDoList.length > 0" @click="allTasks" class="fas fa-check-square" :class="(darkSwitch)?'dark':''" title="Segna tutti come completati"></i>
+                    </div>
+                    <div class="list_box">
+                        <ul>
+                            <li v-for="(element, index) in toDoList" :class="(darkSwitch)?'dark':''">
+                                <div class="edit_element">
+                                    <div class="move_element">
+                                        <i @click="moveUp(index)" :class="(index == 0) ? 'deactive': ''" class="fas fa-caret-up"></i>
+                                        <i @click="moveDown(index)" :class="(index == toDoList.length - 1) ? 'deactive': ''" class="fas fa-caret-down"></i>
+                                    </div>
+                                    <i @click="addEdited(index)" v-if="editTask == index" class="fas fa-check green" :class="(darkSwitch)?'dark':''" title="Conferma modifica"></i>
+                                    <i v-else class="fas fa-pencil-alt" :class="(darkSwitch)?'dark':''" @click="editElement(index)" title="Modifica elemento"></i>
+                                    <input @keyup.enter="addEdited(index)" v-if="editTask == index" type="text" :value="element" v-model="toDoList[index]" :class="(darkSwitch)?'dark':''">
+                                    <p v-else>{{element}}</p>
                                 </div>
-                                <i class="fas fa-pencil-alt" @click="editElement(index)"></i>
-                                <input @keyup.enter="addEdited(index)" v-if="editTask == index" type="text" :value="element" v-model="toDoList[index]">
-                                <p v-else>{{element}}</p>
-                            </div>
-                            <div @click="taskCompleted(index)" class="checkbox" title="Segna come completato"></div>
-                        </li>
-                    </ul>
-                </div>
+                                <div @click="taskCompleted(index)" class="checkbox" :class="(darkSwitch)?'dark':''" title="Segna come completato"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+    
+                <!-- Lista cose fatte -->
+                <section class="completed_box">
+                    <div class="title">
+                        <h2>Compiti svolti</h2>
+                        <i v-if="completedList.length > 0" @click="deleteAllElements()" class="far fa-trash-alt" title="Svuota tutta la lista"></i>
+                    </div>
+                    <div class="list_box">
+                        <ul>
+                            <li v-for="(element, index) in completedList" :class="(darkSwitch)?'dark':''">
+                                <div class="checkbox">
+                                    <i @click="reTask(index)" class="fas fa-arrow-up" :class="(darkSwitch)?'dark':''" title="Ripristina elemento"></i>
+                                    <p>{{element}}</p>
+                                </div>
+                                <div @click="deleteElement(index)" class="delete_box" title="Elimina elemento">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </section>
-
-            <!-- Lista cose fatte -->
-            <section class="completed_box">
-                <div class="title">
-                    <h2>Compiti svolti</h2>
-                    <i v-if="completedList.length > 0" @click="deleteAllElements()" class="far fa-trash-alt" title="Svuota tutta la lista"></i>
-                </div>
-                <div class="list_box">
-                    <ul>
-                        <li v-for="(element, index) in completedList">
-                            <div class="checkbox">
-                                <i @click="reTask(index)" class="fas fa-arrow-up" title="Ripristina elemento"></i>
-                                <p>{{element}}</p>
-                            </div>
-                            <div @click="deleteElement(index)" class="delete_box" title="Elimina elemento">
-                                <i class="fas fa-times"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        
-    </footer>
+        </main>
+    
+        <!-- FOOTER -->
+        <footer>
+            
+        </footer>
+    </section>
 
     <!-- Link Script Javascript -->
     <script src="js/script.js" charset="utf-8"></script>

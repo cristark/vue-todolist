@@ -9,6 +9,7 @@ let app = new Vue({
     data: {
         textList: '',
         editTask: -1,
+        darkSwitch: false,
         toDoList: [
             'Guardare la lezione di teoria della mattina',
             'Fare esercitazioni su Javascript',
@@ -74,6 +75,9 @@ let app = new Vue({
         addEdited(index) {
             this.toDoList.splice(index, 1, this.toDoList[index]);
             this.editTask = -1;
+        },
+        switchDark() {
+                (this.darkSwitch) ? this.darkSwitch = false : this.darkSwitch = true;
         }
     }
 });
