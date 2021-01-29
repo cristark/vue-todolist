@@ -52,8 +52,8 @@
                                     <i @click="moveUp(index)" :class="(index == 0) ? 'deactive': ''" class="fas fa-caret-up"></i>
                                     <i @click="moveDown(index)" :class="(index == toDoList.length - 1) ? 'deactive': ''" class="fas fa-caret-down"></i>
                                 </div>
-                                <i class="fas fa-pencil-alt" @click="editElement"></i>
-                                <input v-if="editTask" type="text" :value="this.textList">
+                                <i class="fas fa-pencil-alt" @click="editElement(index)"></i>
+                                <input @keyup.enter="addEdited(index)" v-if="editTask == index" type="text" :value="element" v-model="toDoList[index]">
                                 <p v-else>{{element}}</p>
                             </div>
                             <div @click="taskCompleted(index)" class="checkbox" title="Segna come completato"></div>

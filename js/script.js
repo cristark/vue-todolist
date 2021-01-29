@@ -8,7 +8,7 @@ let app = new Vue({
     el: '#app',
     data: {
         textList: '',
-        editTask: false,
+        editTask: -1,
         toDoList: [
             'Guardare la lezione di teoria della mattina',
             'Fare esercitazioni su Javascript',
@@ -68,8 +68,12 @@ let app = new Vue({
                 arr.splice(new_index, 0, arr.splice(index, 1)[0]);
             };
         },
-        editElement() {
-            this.editTask = true;
+        editElement(index) {
+            this.editTask = index;
+        },
+        addEdited(index) {
+            this.toDoList.splice(index, 1, this.toDoList[index]);
+            this.editTask = -1;
         }
     }
 });
