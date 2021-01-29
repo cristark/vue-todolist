@@ -25,21 +25,20 @@ h1 {
   font-size: 2.5em;
 }
 
-.todo_box h2 {
-  margin-bottom: 30px;
-}
-
+/* | HEADER | */
 header {
   padding: 30px 0;
   text-transform: uppercase;
   text-align: center;
 }
 
+/* | MAIN | */
 .container {
   width: 1300px;
   margin: auto;
 }
 
+/* | Sezione Input elementi | */
 .input_box {
   text-align: center;
   padding: 30px 0;
@@ -72,8 +71,23 @@ input:focus {
   cursor: pointer;
 }
 
+/* | Sezione Tasks da fare | */
 .todo_box {
   margin-bottom: 50px;
+}
+
+.todo_box .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.todo_box .title i {
+  font-size: 1.8em;
+  color: #70ae6e;
+  margin-right: 50px;
+  cursor: pointer;
 }
 
 .todo_box .list_box ul li,
@@ -117,18 +131,17 @@ input:focus {
   cursor: pointer;
 }
 
+/* | Sezione COMPLETATI | */
 .completed_box .title {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
 }
 
-.completed_box .title h2 {
-  margin-right: 30px;
-}
-
 .completed_box .title i {
   font-size: 1.3em;
+  margin-right: 50px;
   cursor: pointer;
 }
 

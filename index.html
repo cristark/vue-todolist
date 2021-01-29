@@ -40,7 +40,10 @@
 
             <!-- Lista cose da fare -->
             <section class="todo_box">
-                <h2>Lista cose da fare</h2>
+                <div class="title">
+                    <h2>Lista cose da fare</h2>
+                    <i v-if="toDoList.length > 0" @click="allTasks" class="fas fa-check-square" title="Segna tutti come completati"></i>
+                </div>
                 <div class="list_box">
                     <ul>
                         <li v-for="(element, index) in toDoList">
@@ -59,7 +62,7 @@
             <section class="completed_box">
                 <div class="title">
                     <h2>Compiti svolti</h2>
-                    <i @click="deleteAllElements()" class="fas fa-trash" title="Svuota tutta la lista"></i>
+                    <i v-if="completedList.length > 0" @click="deleteAllElements()" class="fas fa-trash" title="Svuota tutta la lista"></i>
                 </div>
                 <div class="list_box">
                     <ul>
