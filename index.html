@@ -32,7 +32,7 @@
 
             <!-- Sezione inserimento elementi lista -->
             <section class="input_box">
-                <input type="text" v-model="textList" placeholder="Inserisci un elemento">
+                <input type="text" @keyup.enter="addTask" v-model="textList" placeholder="Inserisci un elemento">
                 <div class="btn add">
                     <i @click="addTask" class="fas fa-plus" title="Aggiungi elemento"></i>
                 </div>
@@ -47,12 +47,16 @@
                 <div class="list_box">
                     <ul>
                         <li v-for="(element, index) in toDoList">
-                            <div class="move_element">
-                                <i @click="moveUp(index)" :class="(index == 0) ? 'deactive': ''" class="fas fa-caret-up"></i>
-                                <i @click="moveDown(index)" :class="(index == toDoList.length - 1) ? 'deactive': ''" class="fas fa-caret-down"></i>
+                            <div class="edit_element">
+                                <div class="move_element">
+                                    <i @click="moveUp(index)" :class="(index == 0) ? 'deactive': ''" class="fas fa-caret-up"></i>
+                                    <i @click="moveDown(index)" :class="(index == toDoList.length - 1) ? 'deactive': ''" class="fas fa-caret-down"></i>
+                                </div>
+                                <i class="fas fa-pencil-alt" @click="editElement"></i>
+                                <input v-if="editTask" type="text" :value="this.textList">
+                                <p v-else>{{element}}</p>
                             </div>
                             <div @click="taskCompleted(index)" class="checkbox" title="Segna come completato"></div>
-                            {{element}}
                         </li>
                     </ul>
                 </div>
@@ -62,7 +66,7 @@
             <section class="completed_box">
                 <div class="title">
                     <h2>Compiti svolti</h2>
-                    <i v-if="completedList.length > 0" @click="deleteAllElements()" class="fas fa-trash" title="Svuota tutta la lista"></i>
+                    <i v-if="completedList.length > 0" @click="deleteAllElements()" class="far fa-trash-alt" title="Svuota tutta la lista"></i>
                 </div>
                 <div class="list_box">
                     <ul>

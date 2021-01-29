@@ -84,9 +84,9 @@ input:focus {
 }
 
 .todo_box .title i {
-  font-size: 1.8em;
+  font-size: 2em;
   color: #70ae6e;
-  margin-right: 50px;
+  margin-right: 45px;
   cursor: pointer;
 }
 
@@ -102,6 +102,18 @@ input:focus {
   font-size: 1.3em;
   font-weight: 600;
   list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo_box .list_box ul li .edit_element {
+  display: flex;
+  align-items: center;
+}
+
+.todo_box .list_box ul li .edit_element > i {
+  margin-right: 23px;
+  cursor: pointer;
 }
 
 .todo_box .list_box ul li .move_element {
@@ -127,7 +139,6 @@ input:focus {
   border-radius: 10px;
   border: 1px solid #707070;
   background: #fcfafa;
-  margin-right: 50px;
   cursor: pointer;
 }
 
@@ -140,8 +151,8 @@ input:focus {
 }
 
 .completed_box .title i {
-  font-size: 1.3em;
-  margin-right: 50px;
+  font-size: 1.8em;
+  margin-right: 45px;
   cursor: pointer;
 }
 

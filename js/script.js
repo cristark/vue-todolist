@@ -8,6 +8,7 @@ let app = new Vue({
     el: '#app',
     data: {
         textList: '',
+        editTask: false,
         toDoList: [
             'Guardare la lezione di teoria della mattina',
             'Fare esercitazioni su Javascript',
@@ -16,9 +17,6 @@ let app = new Vue({
         completedList: [
             'Fare la spesa'
         ]
-    },
-    created() {
-        console.log(this.textList);
     },
     methods: {
         taskCompleted(i) {
@@ -69,6 +67,9 @@ let app = new Vue({
             if (new_index < arr.length) {
                 arr.splice(new_index, 0, arr.splice(index, 1)[0]);
             };
+        },
+        editElement() {
+            this.editTask = true;
         }
     }
 });
