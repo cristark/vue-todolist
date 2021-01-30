@@ -9,6 +9,7 @@ let app = new Vue({
     data: {
         textList: '',
         editTask: -1,
+        mainSwitch: 0,
         darkSwitch: false,
         toDoList: [
             'Guardare la lezione di teoria della mattina',
@@ -78,6 +79,17 @@ let app = new Vue({
         },
         switchDark() {
                 (this.darkSwitch) ? this.darkSwitch = false : this.darkSwitch = true;
+
+            if (this.mainSwitch == 0) {
+                this.mainSwitch++;
+                console.log(this.mainSwitch);
+            } else if (this.mainSwitch == 1) {
+                this.mainSwitch++;
+                console.log(this.mainSwitch);
+            } else {
+                this.mainSwitch--;
+                console.log(this.mainSwitch);
+            }
         }
     }
 });

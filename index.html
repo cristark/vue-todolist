@@ -23,8 +23,8 @@
         <header>
             <h1>To Do List</h1>
             <p>Light Mode</p>
-            <div class="dark_box" @click="switchDark">
-                <div class="dark_switch"></div>
+            <div class="dark_box" :class="(darkSwitch)?'dark':''" @click="switchDark">
+                <div class="dark_switch" :class="(mainSwitch == 0)?'':(mainSwitch == 1)?'dark':'light'"></div>
             </div>
             <p>Dark Mode</p>
         </header>
@@ -93,9 +93,9 @@
         </main>
     
         <!-- FOOTER -->
-        <footer>
+        <!-- <footer>
             
-        </footer>
+        </footer> -->
     </section>
 
     <!-- Link Script Javascript -->

@@ -7,6 +7,7 @@
 
 body {
   font-family: "Work Sans", sans-serif;
+  height: 100vh;
 }
 
 li {
@@ -20,9 +21,9 @@ h1 {
 }
 
 #app {
+  height: 100vh;
   background: #fcfafa;
   color: #707070;
-  height: 100vh;
   transition: all 0.3s linear;
 }
 
@@ -51,17 +52,24 @@ header p {
   width: 60px;
   height: 30px;
   margin: 0 20px;
-  background-color: #fcfafa;
+  background-color: #27262c;
   border: 1px solid #707070;
   border-radius: 20px;
   cursor: pointer;
+  position: relative;
+  transition: all 0.3s linear;
 }
 
 .dark_box .dark_switch {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background-color: #3b3b58;
+  background-color: #0b8c56;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-10%, -10%);
+  transition: all 0.3s linear;
 }
 
 /* | MAIN | */
@@ -87,11 +95,13 @@ header p {
   border: 1px solid #70707070;
   padding: 5px;
   margin-right: 50px;
+  transition: all 0.3s linear;
 }
 
 input:focus {
   border: none;
   color: #707070;
+  transition: all 0.3s linear;
 }
 
 .input_box i {
@@ -101,6 +111,7 @@ input:focus {
   border-radius: 50%;
   color: #fcfafa;
   cursor: pointer;
+  transition: all 0.3s linear;
 }
 
 /* | Sezione Tasks da fare | */
@@ -120,6 +131,7 @@ input:focus {
   color: #70ae6e;
   margin-right: 45px;
   cursor: pointer;
+  transition: all 0.3s linear;
 }
 
 .todo_box .list_box ul li,
@@ -136,6 +148,7 @@ input:focus {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
+  transition: all 0.3s linear;
 }
 
 .todo_box .list_box ul li .edit_element {
@@ -146,10 +159,12 @@ input:focus {
 .todo_box .list_box ul li .edit_element > i {
   margin-right: 23px;
   cursor: pointer;
+  transition: all 0.3s linear;
 }
 
 .todo_box .list_box ul li .edit_element > i.green {
   color: #70ae6e;
+  transition: all 0.3s linear;
 }
 
 .todo_box .list_box ul li .edit_element input {
@@ -160,6 +175,7 @@ input:focus {
   font-weight: 800;
   height: 30px;
   border-radius: 10px;
+  transition: all 0.3s linear;
 }
 
 .todo_box .list_box ul li .move_element {
@@ -186,9 +202,14 @@ input:focus {
   border: 1px solid #707070;
   background: #fcfafa;
   cursor: pointer;
+  transition: all 0.3s linear;
 }
 
 /* | Sezione COMPLETATI | */
+.completed_box {
+  padding-bottom: 10px;
+}
+
 .completed_box .title {
   display: flex;
   justify-content: space-between;
@@ -245,6 +266,39 @@ input:focus {
 #app.dark {
   background: #19181f;
   color: #fcfafa;
+}
+
+.dark_box.dark {
+  background-color: #fcfafa;
+}
+
+.dark_box .dark_switch.dark {
+  background-color: #707070;
+  animation: slideSwitch 0.3s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideSwitch {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 30px;
+  }
+}
+
+.dark_box .dark_switch.light {
+  animation: slideSwitch1 0.3s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideSwitch1 {
+  0% {
+    left: 30px;
+  }
+  100% {
+    left: 0;
+  }
 }
 
 .input_box input.dark {
