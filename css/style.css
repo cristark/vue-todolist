@@ -78,6 +78,20 @@ header p {
   margin: auto;
 }
 
+/* * Progress Bar * */
+.progress_box {
+  width: 100%;
+  height: 10px;
+  border-top: 0.5px solid #1f1e25;
+}
+
+.progress_bar {
+  width: 10%;
+  height: 100%;
+  background-color: #70ae6e;
+  transition: all 0.5s linear;
+}
+
 /* | Sezione Input elementi | */
 .input_box {
   text-align: center;
@@ -266,6 +280,14 @@ input:focus {
 #app.dark {
   background: #19181f;
   color: #fcfafa;
+}
+
+.progress_box.dark {
+  border-color: #707070;
+}
+
+.progress_bar.dark {
+  background-color: #0b8c56;
 }
 
 .dark_box.dark {

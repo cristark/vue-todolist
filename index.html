@@ -34,7 +34,9 @@
     
             <!-- Contenitore principale Vue -->
             <section class="container">
-                <hr>
+                <div class="progress_box" :class="(darkSwitch)?'dark':''">
+                    <div class="progress_bar" :class="(darkSwitch)?'dark':''" :style="{ width: barLength + '%' }"></div>
+                </div>
     
                 <!-- Sezione inserimento elementi lista -->
                 <section class="input_box">

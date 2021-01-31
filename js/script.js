@@ -11,6 +11,7 @@ let app = new Vue({
         editTask: -1,
         mainSwitch: 0,
         darkSwitch: false,
+        barLength: 0,
         toDoList: [
             'Guardare la lezione di teoria della mattina',
             'Fare esercitazioni su Javascript',
@@ -20,32 +21,45 @@ let app = new Vue({
             'Fare la spesa'
         ]
     },
+    created() {
+        this.findBarPercentage();
+    },
     methods: {
         taskCompleted(i) {
             this.completedList.unshift(this.toDoList[i]);
             this.toDoList.splice(i, 1);
+
+            this.findBarPercentage();
         },
         allTasks() {
             do {
                 this.completedList.unshift(this.toDoList[0]);
                 this.toDoList.splice(this.toDoList[0], 1);
             } while(this.toDoList.length > 0);
+
+            this.findBarPercentage();
         },
         reTask(i) {
             this.toDoList.unshift(this.completedList[i]);
             this.completedList.splice(i, 1);
+
+            this.findBarPercentage();
         },
         deleteElement(i) {
             let mex = confirm('Sei sicuro di voler eliminare questo elemento?');
             if (mex) {
                 this.completedList.splice(i, 1)   
             };
+
+            this.findBarPercentage();
         },
         deleteAllElements() {
             let mex = confirm('Sei sicuro di voler eliminare tutti gli elementi?');
             if (mex) {
                 this.completedList = [];  
             };
+
+            this.findBarPercentage();
         },
         addTask() {
             if (this.textList.length < 4) {
@@ -55,6 +69,7 @@ let app = new Vue({
             };
 
             this.textList = '';
+            this.findBarPercentage();
         },
         moveUp(index) {
             let new_index = index - 1;
@@ -90,6 +105,12 @@ let app = new Vue({
                 this.mainSwitch--;
                 console.log(this.mainSwitch);
             }
+        },
+        findBarPercentage () {
+            let maxArr = this.toDoList.length + this.completedList.length;
+            console.log(maxArr);
+            this.barLength = (this.completedList.length * 100) / maxArr;
+            console.log(this.barLength);
         }
     }
 });
