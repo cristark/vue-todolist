@@ -170,6 +170,17 @@ input:focus {
   align-items: center;
 }
 
+.todo_box .list_box ul li .edit_element p {
+  max-width: 1000px;
+  height: 30px;
+  line-height: 30px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow-y: auto;
+}
+
 .todo_box .list_box ul li .edit_element > i {
   margin-right: 23px;
   cursor: pointer;
@@ -295,7 +306,7 @@ input:focus {
 }
 
 .dark_box .dark_switch.dark {
-  background-color: #707070;
+  background-color: #3b3b58;
   animation: slideSwitch 0.3s linear;
   animation-fill-mode: forwards;
 }
